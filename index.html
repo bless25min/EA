@@ -594,20 +594,20 @@
 
                 <div class="performance-grid">
                     <div class="perf-item">
-                        <span class="perf-value">趨勢</span>
-                        <span class="perf-label">長線策略</span>
+                        <span class="perf-value">開發中</span>
+                        <span class="perf-label">勝率</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">震盪</span>
-                        <span class="perf-label">短線策略</span>
+                        <span class="perf-value">趨勢12.6:1</span>
+                        <span class="perf-label">盈利因子</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">並行</span>
-                        <span class="perf-label">運作模式</span>
+                        <span class="perf-value">盤整2.1:1</span>
+                        <span class="perf-label">總獲利</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">多重</span>
-                        <span class="perf-label">信號確認</span>
+                        <span class="perf-value">測試中</span>
+                        <span class="perf-label">夏普比率</span>
                     </div>
                 </div>
 
@@ -800,10 +800,10 @@
     </div>
 
     <!-- 圖片放大Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="放大圖片">
+            <img id="modalImage" src="" alt="放大圖片" style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
             <h3 id="modalTitle" style="text-align: center; margin-top: 15px; color: #2d3748;"></h3>
         </div>
     </div>
@@ -824,8 +824,9 @@
             });
         });
 
-        // 圖片載入錯誤處理
+        // 修復的點擊事件處理
         document.addEventListener('DOMContentLoaded', function() {
+            // 圖片載入錯誤處理
             const images = document.querySelectorAll('img');
             images.forEach(img => {
                 img.addEventListener('error', function() {
@@ -840,32 +841,46 @@
             // 為所有圖片容器添加點擊事件
             const chartItems = document.querySelectorAll('.chart-item');
             chartItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const img = this.querySelector('img');
-                    const title = img ? img.getAttribute('data-title') || img.alt : '';
-                    const imageSrc = img ? img.src : '';
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     
-                    if (img && img.style.display !== 'none' && imageSrc) {
-                        showImageModal(imageSrc, title);
+                    const img = this.querySelector('img');
+                    if (!img || img.style.display === 'none') {
+                        console.log('圖片不存在或已隱藏');
+                        return;
                     }
+                    
+                    const title = img.getAttribute('data-title') || img.alt || '圖表詳細資訊';
+                    const imageSrc = img.src;
+                    
+                    console.log('點擊圖片:', title, imageSrc);
+                    showImageModal(imageSrc, title);
                 });
             });
         });
 
         // 圖片放大功能
         function showImageModal(imageSrc, title) {
+            console.log('顯示Modal:', imageSrc, title);
+            
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
             
-            if (modal && modalImg && modalTitle) {
-                modal.style.display = 'block';
-                modalImg.src = imageSrc;
-                modalTitle.textContent = title || '圖表詳細資訊';
-                
-                // 防止背景滾動
-                document.body.style.overflow = 'hidden';
+            if (!modal || !modalImg || !modalTitle) {
+                console.error('Modal元素不存在');
+                return;
             }
+            
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            
+            // 防止背景滾動
+            document.body.style.overflow = 'hidden';
+            
+            console.log('Modal已顯示');
         }
 
         function openModal(element) {
