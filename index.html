@@ -206,12 +206,32 @@
             border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
             cursor: pointer;
+            position: relative;
         }
 
         .chart-item:hover {
             background: #edf2f7;
             border-color: #cbd5e0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .chart-item::after {
+            content: '🔍 點擊放大';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(66, 153, 225, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .chart-item:hover::after {
+            opacity: 1;
         }
 
         .chart-item h4 {
@@ -477,20 +497,20 @@
 
                 <div class="strategy-details">
                     <div class="detail-item">
-                        <div class="detail-label">交易市場</div>
+                        <div class="detail-label">交易商品</div>
                         <div class="detail-value">美國科技股指數</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">交易時段</div>
-                        <div class="detail-value">美股開盤時間</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">策略類型</div>
+                        <div class="detail-label">策略模式</div>
                         <div class="detail-value">智能雙模式</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">風險等級</div>
-                        <div class="detail-value">中等風險</div>
+                        <div class="detail-label">技術指標</div>
+                        <div class="detail-value">多重確認</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">風險控制</div>
+                        <div class="detail-value">動態調整</div>
                     </div>
                 </div>
 
@@ -514,26 +534,23 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item" onclick="openModal('./NAS日內.png', 'NAS日內獲利曲線')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 獲利曲線圖</h4>
-                        <img src="./NAS日內.png" alt="NAS日內獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./NAS日內.png" alt="NAS日內獲利曲線" data-title="NAS日內 - 獲利曲線圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內.png</div>
-                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
                 </div>
 
                 <div class="chart-grid">
-                    <div class="chart-item" onclick="openModal('./NAS日內-hst.png', 'NAS日內交易記錄')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📊 交易記錄圖</h4>
-                        <img src="./NAS日內-hst.png" alt="NAS日內交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./NAS日內-hst.png" alt="NAS日內交易記錄" data-title="NAS日內 - 交易記錄圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內-hst.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item" onclick="openModal('./NAS日內-mfemae.png', 'NAS日內風險分析')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 風險分析圖</h4>
-                        <img src="./NAS日內-mfemae.png" alt="NAS日內風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./NAS日內-mfemae.png" alt="NAS日內風險分析" data-title="NAS日內 - 風險分析圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內-mfemae.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -595,26 +612,23 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效.png', 'XAU雙參數獲利曲線')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 獲利曲線圖</h4>
-                        <img src="./XAUEA雙參數績效.png" alt="XAU雙參數獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAUEA雙參數績效.png" alt="XAU雙參數獲利曲線" data-title="XAU雙參數 - 獲利曲線圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效.png</div>
-                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
                 </div>
 
                 <div class="chart-grid">
-                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效-hst.png', 'XAU雙參數交易記錄')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📊 交易記錄圖</h4>
-                        <img src="./XAUEA雙參數績效-hst.png" alt="XAU雙參數交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAUEA雙參數績效-hst.png" alt="XAU雙參數交易記錄" data-title="XAU雙參數 - 交易記錄圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效-hst.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效-mfemae.png', 'XAU雙參數風險分析')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 風險分析圖</h4>
-                        <img src="./XAUEA雙參數績效-mfemae.png" alt="XAU雙參數風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAUEA雙參數績效-mfemae.png" alt="XAU雙參數風險分析" data-title="XAU雙參數 - 風險分析圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效-mfemae.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -643,15 +657,15 @@
                         <div class="detail-value">國際黃金</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">策略核心</div>
+                        <div class="detail-label">策略模式</div>
                         <div class="detail-value">突破交易</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">進場方式</div>
+                        <div class="detail-label">技術指標</div>
                         <div class="detail-value">延遲確認</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">資金管理</div>
+                        <div class="detail-label">風險控制</div>
                         <div class="detail-value">科學配置</div>
                     </div>
                 </div>
@@ -676,26 +690,23 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item" onclick="openModal('./XAU2D.png', 'XAU2D獲利曲線')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 獲利曲線圖</h4>
-                        <img src="./XAU2D.png" alt="XAU2D獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAU2D.png" alt="XAU2D獲利曲線" data-title="XAU2D突破 - 獲利曲線圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D.png</div>
-                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
                 </div>
 
                 <div class="chart-grid">
-                    <div class="chart-item" onclick="openModal('./XAU2D-hst.png', 'XAU2D交易記錄')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📊 交易記錄圖</h4>
-                        <img src="./XAU2D-hst.png" alt="XAU2D交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAU2D-hst.png" alt="XAU2D交易記錄" data-title="XAU2D突破 - 交易記錄圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D-hst.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item" onclick="openModal('./XAU2D-mfemae.png', 'XAU2D風險分析')">
+                    <div class="chart-item" onclick="openModal(this)">
                         <h4>📈 風險分析圖</h4>
-                        <img src="./XAU2D-mfemae.png" alt="XAU2D風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <img src="./XAU2D-mfemae.png" alt="XAU2D風險分析" data-title="XAU2D突破 - 風險分析圖" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D-mfemae.png</div>
-                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -825,20 +836,41 @@
                     }
                 });
             });
+
+            // 為所有圖片容器添加點擊事件
+            const chartItems = document.querySelectorAll('.chart-item');
+            chartItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const img = this.querySelector('img');
+                    const title = img ? img.getAttribute('data-title') || img.alt : '';
+                    const imageSrc = img ? img.src : '';
+                    
+                    if (img && img.style.display !== 'none' && imageSrc) {
+                        showImageModal(imageSrc, title);
+                    }
+                });
+            });
         });
 
         // 圖片放大功能
-        function openModal(imageSrc, title) {
+        function showImageModal(imageSrc, title) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
             
-            modal.style.display = 'block';
-            modalImg.src = imageSrc;
-            modalTitle.textContent = title;
-            
-            // 防止背景滾動
-            document.body.style.overflow = 'hidden';
+            if (modal && modalImg && modalTitle) {
+                modal.style.display = 'block';
+                modalImg.src = imageSrc;
+                modalTitle.textContent = title || '圖表詳細資訊';
+                
+                // 防止背景滾動
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function openModal(element) {
+            // 保持向後兼容性
+            showImageModal(element);
         }
 
         function closeModal() {
