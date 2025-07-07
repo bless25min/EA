@@ -193,51 +193,115 @@
 
         .chart-images {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 16px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .chart-item {
             background: #f7fafc;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid #e2e8f0;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .chart-item:hover {
             background: #edf2f7;
             border-color: #cbd5e0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .chart-item h4 {
             color: #4a5568;
-            margin-bottom: 8px;
-            font-size: 0.75rem;
+            margin-bottom: 15px;
+            font-size: 1rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
         .chart-item img {
             max-width: 100%;
             height: auto;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .chart-item img:hover {
+            transform: scale(1.02);
         }
 
         .chart-item .filename {
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             background: #e2e8f0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
             color: #4a5568;
             font-weight: 500;
-            margin-top: 8px;
+            margin-top: 12px;
             display: inline-block;
+        }
+
+        /* 圖片放大功能 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 95%;
+            max-height: 95%;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #666;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .summary-section {
@@ -450,25 +514,26 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item">
-                        <h4>📈 獲利曲線</h4>
+                    <div class="chart-item" onclick="openModal('./NAS日內.png', 'NAS日內獲利曲線')">
+                        <h4>📈 獲利曲線圖</h4>
                         <img src="./NAS日內.png" alt="NAS日內獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內.png</div>
+                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📊 交易記錄</h4>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-item" onclick="openModal('./NAS日內-hst.png', 'NAS日內交易記錄')">
+                        <h4>📊 交易記錄圖</h4>
                         <img src="./NAS日內-hst.png" alt="NAS日內交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內-hst.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📈 風險分析</h4>
+                    <div class="chart-item" onclick="openModal('./NAS日內-mfemae.png', 'NAS日內風險分析')">
+                        <h4>📈 風險分析圖</h4>
                         <img src="./NAS日內-mfemae.png" alt="NAS日內風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">NAS日內-mfemae.png</div>
-                    </div>
-                    <div class="chart-item">
-                        <h4>⏱️ 持倉時間</h4>
-                        <img src="./NAS日內-holding.png" alt="NAS日內持倉時間" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div class="filename" style="display: none;">NAS日內-holding.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -530,25 +595,26 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item">
-                        <h4>📈 獲利曲線</h4>
+                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效.png', 'XAU雙參數獲利曲線')">
+                        <h4>📈 獲利曲線圖</h4>
                         <img src="./XAUEA雙參數績效.png" alt="XAU雙參數獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效.png</div>
+                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📊 交易記錄</h4>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效-hst.png', 'XAU雙參數交易記錄')">
+                        <h4>📊 交易記錄圖</h4>
                         <img src="./XAUEA雙參數績效-hst.png" alt="XAU雙參數交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效-hst.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📈 風險分析</h4>
+                    <div class="chart-item" onclick="openModal('./XAUEA雙參數績效-mfemae.png', 'XAU雙參數風險分析')">
+                        <h4>📈 風險分析圖</h4>
                         <img src="./XAUEA雙參數績效-mfemae.png" alt="XAU雙參數風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAUEA雙參數績效-mfemae.png</div>
-                    </div>
-                    <div class="chart-item">
-                        <h4>⏱️ 持倉時間</h4>
-                        <img src="./XAUEA雙參數績效-holding.png" alt="XAU雙參數持倉時間" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div class="filename" style="display: none;">XAUEA雙參數績效-holding.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -610,25 +676,26 @@
                 </div>
 
                 <div class="chart-images">
-                    <div class="chart-item">
-                        <h4>📈 獲利曲線</h4>
+                    <div class="chart-item" onclick="openModal('./XAU2D.png', 'XAU2D獲利曲線')">
+                        <h4>📈 獲利曲線圖</h4>
                         <img src="./XAU2D.png" alt="XAU2D獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D.png</div>
+                        <p style="margin-top: 10px; font-size: 0.875rem; color: #666;">點擊查看大圖</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📊 交易記錄</h4>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-item" onclick="openModal('./XAU2D-hst.png', 'XAU2D交易記錄')">
+                        <h4>📊 交易記錄圖</h4>
                         <img src="./XAU2D-hst.png" alt="XAU2D交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D-hst.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
-                    <div class="chart-item">
-                        <h4>📈 風險分析</h4>
+                    <div class="chart-item" onclick="openModal('./XAU2D-mfemae.png', 'XAU2D風險分析')">
+                        <h4>📈 風險分析圖</h4>
                         <img src="./XAU2D-mfemae.png" alt="XAU2D風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="filename" style="display: none;">XAU2D-mfemae.png</div>
-                    </div>
-                    <div class="chart-item">
-                        <h4>⏱️ 持倉時間</h4>
-                        <img src="./XAU2D-holding.png" alt="XAU2D持倉時間" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div class="filename" style="display: none;">XAU2D-holding.png</div>
+                        <p style="margin-top: 8px; font-size: 0.75rem; color: #666;">點擊放大</p>
                     </div>
                 </div>
             </div>
@@ -721,6 +788,15 @@
         </div>
     </div>
 
+    <!-- 圖片放大Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="放大圖片">
+            <h3 id="modalTitle" style="text-align: center; margin-top: 15px; color: #2d3748;"></h3>
+        </div>
+    </div>
+
     <script>
         // 簡單的動畫效果
         window.addEventListener('load', function() {
@@ -749,6 +825,35 @@
                     }
                 });
             });
+        });
+
+        // 圖片放大功能
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            
+            // 防止背景滾動
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            
+            // 恢復背景滾動
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC鍵關閉Modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
