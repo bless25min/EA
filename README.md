@@ -68,21 +68,46 @@ EA是一種電腦程式，能夠根據預設的規則自動進行買賣交易，
 
 ```
 EA-Strategy-Dashboard/
-├── index.html                 # 主要展示頁面
-├── README.md                  # 專案說明文件
+├── index.html                          # 主要展示頁面
+├── README.md                           # 專案說明文件
 ├── 📊 美股指數策略圖表/
-│   ├── NAS日內.png            # 獲利曲線圖
-│   ├── NAS日內-hst.png        # 交易記錄圖
-│   ├── NAS日內-mfemae.png     # 風險分析圖
-│   └── NAS日內-holding.png    # 持倉時間圖
-├── 🥇 黃金突破策略圖表/
-│   ├── XAU2D.png              # 獲利曲線圖
-│   ├── XAU2D-hst.png          # 交易記錄圖
-│   ├── XAU2D-mfemae.png       # 風險分析圖
-│   └── XAU2D-holding.png      # 持倉時間圖
-└── 📈 原始測試報告/
-    ├── NAS日內.html           # 美股策略完整報告
-    └── XAU2D.html             # 黃金策略完整報告
+│   ├── NAS日內.png                     # 獲利曲線圖
+│   ├── NAS日內-hst.png                 # 交易記錄圖
+│   ├── NAS日內-mfemae.png              # 風險分析圖
+│   └── NAS日內-holding.png             # 持倉時間圖
+├── 🥇 黃金雙參數策略圖表/
+│   ├── XAUEA雙參數績效.png             # 獲利曲線圖
+│   ├── XAUEA雙參數績效-hst.png         # 交易記錄圖
+│   ├── XAUEA雙參數績效-mfemae.png      # 風險分析圖
+│   └── XAUEA雙參數績效-holding.png     # 持倉時間圖
+└── ⚡ 黃金突破策略圖表/
+    ├── XAU2D.png                       # 獲利曲線圖
+    ├── XAU2D-hst.png                   # 交易記錄圖
+    ├── XAU2D-mfemae.png                # 風險分析圖
+    └── XAU2D-holding.png               # 持倉時間圖
+```
+
+## 🚀 如何查看展示頁面
+
+### 線上瀏覽
+1. 訪問 GitHub Pages 網址：`https://你的用戶名.github.io/專案名稱/`
+2. 或者點擊 GitHub 專案頁面右側的網站連結
+
+### 本地運行
+```bash
+# 下載專案
+git clone https://github.com/你的用戶名/專案名稱.git
+
+# 進入專案目錄
+cd 專案名稱
+
+# 開啟本地網頁伺服器 (可選擇以下任一方式)
+python -m http.server 8000        # Python 3
+python -m SimpleHTTPServer 8000   # Python 2
+npx serve .                        # Node.js
+
+# 在瀏覽器中打開
+http://localhost:8000
 ```
 
 ## 💡 投資術語解釋
