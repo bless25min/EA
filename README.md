@@ -85,29 +85,6 @@ EA-Strategy-Dashboard/
     └── XAU2D.html             # 黃金策略完整報告
 ```
 
-## 🚀 如何查看展示頁面
-
-### 線上瀏覽
-1. 訪問 GitHub Pages 網址：`https://你的用戶名.github.io/專案名稱/`
-2. 或者點擊 GitHub 專案頁面右側的網站連結
-
-### 本地運行
-```bash
-# 下載專案
-git clone https://github.com/你的用戶名/專案名稱.git
-
-# 進入專案目錄
-cd 專案名稱
-
-# 開啟本地網頁伺服器 (可選擇以下任一方式)
-python -m http.server 8000        # Python 3
-python -m SimpleHTTPServer 8000   # Python 2
-npx serve .                        # Node.js
-
-# 在瀏覽器中打開
-http://localhost:8000
-```
-
 ## 💡 投資術語解釋
 
 ### 基礎概念
