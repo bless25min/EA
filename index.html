@@ -48,6 +48,27 @@
             font-size: 1.125rem;
         }
 
+        .author-info {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .author-info p {
+            color: #4a5568;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .author-info a {
+            color: #4299e1;
+            text-decoration: none;
+        }
+
+        .author-info a:hover {
+            text-decoration: underline;
+        }
+
         .strategies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -200,6 +221,13 @@
             letter-spacing: 0.05em;
         }
 
+        .chart-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         .chart-item .filename {
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
             background: #e2e8f0;
@@ -208,6 +236,8 @@
             font-size: 0.75rem;
             color: #4a5568;
             font-weight: 500;
+            margin-top: 8px;
+            display: inline-block;
         }
 
         .summary-section {
@@ -352,6 +382,12 @@
         <div class="header">
             <h1>🚀 EA策略開發總覽</h1>
             <p>三大核心交易策略實測績效與技術分析</p>
+            <div class="author-info">
+                <p>
+                    <strong>專案作者：</strong>廖天佑 &nbsp;|&nbsp; 
+                    <strong>聯絡信箱：</strong><a href="mailto:bless@25min.co">bless@25min.co</a>
+                </p>
+            </div>
         </div>
 
         <!-- 策略卡片區域 -->
@@ -368,28 +404,29 @@
                 </div>
 
                 <div class="strategy-description">
-                    <strong>策略邏輯：</strong>基於NASDAQ100開盤前盤型判斷，自動選擇適合的突破策略<br>
-                    • <strong>策略一：</strong>盤整盤 - 開盤後3根5分K線區間突破<br>
-                    • <strong>策略二：</strong>趨勢盤 - 開盤前4根30分K線區間突破<br>
-                    • <strong>測試期間：</strong>2025.01.01 - 2025.06.27 (M5週期)
+                    <strong>策略說明：</strong>專門針對NASDAQ100指數設計的智能交易系統<br>
+                    • <strong>自動判斷：</strong>根據開盤前市場狀況，自動選擇最適合的交易策略<br>
+                    • <strong>盤整模式：</strong>當市場波動較小時，使用短期區間突破策略<br>
+                    • <strong>趨勢模式：</strong>當市場呈現明確趨勢時，跟隨大方向交易<br>
+                    • <strong>測試期間：</strong>2025年1月至6月，共6個月實測數據
                 </div>
 
                 <div class="strategy-details">
                     <div class="detail-item">
-                        <div class="detail-label">交易品種</div>
-                        <div class="detail-value">NAS100</div>
+                        <div class="detail-label">交易市場</div>
+                        <div class="detail-value">美國科技股指數</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">測試週期</div>
-                        <div class="detail-value">5分鐘 (M5)</div>
+                        <div class="detail-label">交易時段</div>
+                        <div class="detail-value">美股開盤時間</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">初始資金</div>
-                        <div class="detail-value">$1,000</div>
+                        <div class="detail-label">策略類型</div>
+                        <div class="detail-value">智能雙模式</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">槓桿比例</div>
-                        <div class="detail-value">1:500</div>
+                        <div class="detail-label">風險等級</div>
+                        <div class="detail-value">中等風險</div>
                     </div>
                 </div>
 
@@ -403,8 +440,8 @@
                         <span class="perf-label">盈利因子</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">$7,236.80</span>
-                        <span class="perf-label">總淨盈利</span>
+                        <span class="perf-value">$7,237</span>
+                        <span class="perf-label">總獲利</span>
                     </div>
                     <div class="perf-item">
                         <span class="perf-value">8.34</span>
@@ -414,20 +451,24 @@
 
                 <div class="chart-images">
                     <div class="chart-item">
-                        <h4>📈 權益曲線圖</h4>
-                        <div class="filename">NAS日內.png</div>
+                        <h4>📈 獲利曲線</h4>
+                        <img src="./NAS日內.png" alt="NAS日內獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">NAS日內.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>📊 交易歷史圖</h4>
-                        <div class="filename">NAS日內-hst.png</div>
+                        <h4>📊 交易記錄</h4>
+                        <img src="./NAS日內-hst.png" alt="NAS日內交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">NAS日內-hst.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>📈 MFE/MAE分析</h4>
-                        <div class="filename">NAS日內-mfemae.png</div>
+                        <h4>📈 風險分析</h4>
+                        <img src="./NAS日內-mfemae.png" alt="NAS日內風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">NAS日內-mfemae.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>⏱️ 持倉時間分佈</h4>
-                        <div class="filename">NAS日內-holding.png</div>
+                        <h4>⏱️ 持倉時間</h4>
+                        <img src="./NAS日內-holding.png" alt="NAS日內持倉時間" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">NAS日內-holding.png</div>
                     </div>
                 </div>
             </div>
@@ -437,34 +478,35 @@
                 <div class="strategy-header">
                     <div class="strategy-icon">🥇</div>
                     <div class="strategy-title">
-                        <h2>XAU雙參數策略</h2>
+                        <h2>黃金雙參數策略</h2>
                         <div class="version">DualStrategyEA v3.0</div>
                     </div>
                 </div>
 
                 <div class="strategy-description">
-                    <strong>策略邏輯：</strong>黃金交易雙策略系統，趨勢與盤整策略獨立運作<br>
-                    • <strong>趨勢策略：</strong>基於均線、RSI、ADX、MACD組合判斷，追求高風報比<br>
-                    • <strong>盤整策略：</strong>適用震盪市場，快進快出策略<br>
-                    • <strong>技術指標：</strong>使用不同週期的RSI、ADX、ATR參數組合
+                    <strong>策略說明：</strong>專為黃金市場設計的雙重策略系統<br>
+                    • <strong>趨勢策略：</strong>當黃金走勢明確時，跟隨主要趨勢獲取較大利潤<br>
+                    • <strong>震盪策略：</strong>當黃金價格在區間內波動時，進行短線交易<br>
+                    • <strong>智能切換：</strong>根據市場狀況自動選擇最適合的策略<br>
+                    • <strong>風險控制：</strong>使用動態止損，隨市場波動調整風險
                 </div>
 
                 <div class="strategy-details">
                     <div class="detail-item">
-                        <div class="detail-label">交易品種</div>
-                        <div class="detail-value">XAUUSD</div>
+                        <div class="detail-label">交易商品</div>
+                        <div class="detail-value">國際黃金</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">魔術號碼</div>
-                        <div class="detail-value">20250129</div>
+                        <div class="detail-label">策略模式</div>
+                        <div class="detail-value">雙軌並行</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">策略類型</div>
-                        <div class="detail-value">雙參數系統</div>
+                        <div class="detail-label">技術指標</div>
+                        <div class="detail-value">多重確認</div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">風險控制</div>
-                        <div class="detail-value">ATR動態止損</div>
+                        <div class="detail-value">動態調整</div>
                     </div>
                 </div>
 
@@ -474,27 +516,27 @@
                         <span class="perf-label">長線策略</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">盤整</span>
+                        <span class="perf-value">震盪</span>
                         <span class="perf-label">短線策略</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">獨立</span>
+                        <span class="perf-value">並行</span>
                         <span class="perf-label">運作模式</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">多指標</span>
-                        <span class="perf-label">確認系統</span>
+                        <span class="perf-value">多重</span>
+                        <span class="perf-label">信號確認</span>
                     </div>
                 </div>
 
                 <div class="chart-images">
                     <div class="chart-item">
-                        <h4>📊 MFE/MAE分析</h4>
-                        <div class="filename">專案中的散點圖</div>
+                        <h4>📊 策略分析</h4>
+                        <div class="filename">開發中的視覺化圖表</div>
                     </div>
                     <div class="chart-item">
                         <h4>📈 績效追蹤</h4>
-                        <div class="filename">雙策略比較圖</div>
+                        <div class="filename">雙策略比較數據</div>
                     </div>
                 </div>
             </div>
@@ -504,35 +546,35 @@
                 <div class="strategy-header">
                     <div class="strategy-icon">⚡</div>
                     <div class="strategy-title">
-                        <h2>XAU2D突破策略</h2>
+                        <h2>黃金2日突破策略</h2>
                         <div class="version">2DayBreakout Advanced v2.0</div>
                     </div>
                 </div>
 
                 <div class="strategy-description">
-                    <strong>策略邏輯：</strong>基於最近2日高低點突破的高級策略<br>
-                    • <strong>假突破過濾：</strong>使用ATR濾網和延遲確認機制<br>
-                    • <strong>順勢濾網：</strong>多時間框架趨勢判斷<br>
-                    • <strong>風險管理：</strong>凱利公式動態倉位計算<br>
-                    • <strong>測試期間：</strong>完整回測數據可用
+                    <strong>策略說明：</strong>基於黃金價格突破重要支撐阻力位的交易策略<br>
+                    • <strong>突破確認：</strong>等待價格真正突破近兩日的最高或最低點<br>
+                    • <strong>假突破過濾：</strong>使用先進的技術分析，避免假突破陷阱<br>
+                    • <strong>智能進場：</strong>不立即進場，而是等待市場確認突破有效性<br>
+                    • <strong>科學資金管理：</strong>根據獲勝機率動態調整投入資金比例
                 </div>
 
                 <div class="strategy-details">
                     <div class="detail-item">
-                        <div class="detail-label">交易品種</div>
-                        <div class="detail-value">XAUUSD</div>
+                        <div class="detail-label">交易商品</div>
+                        <div class="detail-value">國際黃金</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">魔術號碼</div>
-                        <div class="detail-value">202506</div>
+                        <div class="detail-label">策略核心</div>
+                        <div class="detail-value">突破交易</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">初始資金</div>
-                        <div class="detail-value">$1,000</div>
+                        <div class="detail-label">進場方式</div>
+                        <div class="detail-value">延遲確認</div>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">槓桿比例</div>
-                        <div class="detail-value">1:500</div>
+                        <div class="detail-label">資金管理</div>
+                        <div class="detail-value">科學配置</div>
                     </div>
                 </div>
 
@@ -546,8 +588,8 @@
                         <span class="perf-label">盈利因子</span>
                     </div>
                     <div class="perf-item">
-                        <span class="perf-value">$1,548.20</span>
-                        <span class="perf-label">總淨盈利</span>
+                        <span class="perf-value">$1,548</span>
+                        <span class="perf-label">總獲利</span>
                     </div>
                     <div class="perf-item">
                         <span class="perf-value">40.04</span>
@@ -557,20 +599,24 @@
 
                 <div class="chart-images">
                     <div class="chart-item">
-                        <h4>📈 權益曲線圖</h4>
-                        <div class="filename">XAU2D.png</div>
+                        <h4>📈 獲利曲線</h4>
+                        <img src="./XAU2D.png" alt="XAU2D獲利曲線" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">XAU2D.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>📊 交易歷史圖</h4>
-                        <div class="filename">XAU2D-hst.png</div>
+                        <h4>📊 交易記錄</h4>
+                        <img src="./XAU2D-hst.png" alt="XAU2D交易記錄" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">XAU2D-hst.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>📈 MFE/MAE分析</h4>
-                        <div class="filename">XAU2D-mfemae.png</div>
+                        <h4>📈 風險分析</h4>
+                        <img src="./XAU2D-mfemae.png" alt="XAU2D風險分析" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">XAU2D-mfemae.png</div>
                     </div>
                     <div class="chart-item">
-                        <h4>⏱️ 持倉時間分佈</h4>
-                        <div class="filename">XAU2D-holding.png</div>
+                        <h4>⏱️ 持倉時間</h4>
+                        <img src="./XAU2D-holding.png" alt="XAU2D持倉時間" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="filename" style="display: none;">XAU2D-holding.png</div>
                     </div>
                 </div>
             </div>
@@ -578,16 +624,16 @@
 
         <!-- 總結統計 -->
         <div class="summary-section">
-            <h2 style="color: #1e3c72; margin-bottom: 20px;">📈 整體開發統計</h2>
+            <h2 style="color: #2d3748; margin-bottom: 20px;">📈 整體開發成果</h2>
             
             <div class="summary-stats">
                 <div class="stat-card">
                     <span class="stat-value">3</span>
-                    <span class="stat-label">EA策略</span>
+                    <span class="stat-label">交易策略</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-value">2</span>
-                    <span class="stat-label">交易品種</span>
+                    <span class="stat-label">投資市場</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-value">96</span>
@@ -595,73 +641,68 @@
                 </div>
                 <div class="stat-card">
                     <span class="stat-value">67.7%</span>
-                    <span class="stat-label">平均勝率</span>
+                    <span class="stat-label">平均獲勝率</span>
                 </div>
             </div>
 
             <!-- 專業名詞解釋 -->
             <div class="terminology">
-                <h3>📚 專業名詞解釋</h3>
+                <h3>📚 投資名詞說明</h3>
                 
                 <div class="term">
-                    <span class="term-name">夏普比率 (Sharpe Ratio)：</span>
-                    衡量投資組合風險調整後報酬的指標，數值越高表示策略在承擔相同風險下能獲得更高報酬。
+                    <span class="term-name">獲勝率 (勝率)：</span>
+                    在所有交易中，賺錢交易所佔的百分比。例如72%勝率表示每100筆交易中有72筆是賺錢的。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">盈利因子 (Profit Factor)：</span>
-                    所有盈利交易總和除以所有虧損交易總和，大於1表示策略整體盈利，數值越高越好。
+                    <span class="term-name">盈利因子：</span>
+                    所有賺錢交易的總金額除以所有虧錢交易的總金額。數字大於1表示整體獲利，數字越大越好。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">ATR (Average True Range)：</span>
-                    平均真實區間，衡量市場波動性的技術指標，常用於設定止損和倉位大小。
+                    <span class="term-name">夏普比率：</span>
+                    衡量投資策略風險與報酬平衡的指標。數字越高表示在相同風險下能獲得更好的報酬。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">凱利公式 (Kelly Criterion)：</span>
-                    用於計算最優投注比例的數學公式，幫助決定每筆交易應投入的資金比例。
+                    <span class="term-name">突破交易：</span>
+                    當價格突破重要的支撐或阻力位時進行交易，通常意味著價格將朝突破方向繼續發展。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">MFE/MAE：</span>
-                    最大有利偏移/最大不利偏移，分析交易過程中的最佳進出場時機和風險控制效果。
+                    <span class="term-name">動態止損：</span>
+                    根據市場波動自動調整停損點，不是固定金額，而是隨著市場狀況彈性調整風險控制。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">RSI (Relative Strength Index)：</span>
-                    相對強弱指標，用於判斷市場超買超賣狀態的動量振盪器。
+                    <span class="term-name">風險分析 (MFE/MAE)：</span>
+                    分析每筆交易過程中的最大獲利和最大虧損，幫助改進進出場時機。
                 </div>
                 
                 <div class="term">
-                    <span class="term-name">ADX (Average Directional Index)：</span>
-                    平均趨向指標，用於衡量趨勢強度，不論趨勢方向為何。
-                </div>
-                
-                <div class="term">
-                    <span class="term-name">MACD：</span>
-                    指數平滑移動平均線差值，用於捕捉趨勢變化和動量轉換的技術指標。
+                    <span class="term-name">技術指標：</span>
+                    利用價格、成交量等數據計算出的指標，幫助判斷市場趨勢和進出場時機。
                 </div>
             </div>
 
             <div style="margin-top: 32px; padding: 24px; background: #f7fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
-                <h3 style="color: #2d3748; margin-bottom: 16px; font-size: 1.125rem; font-weight: 600;">📋 策略特色總結</h3>
+                <h3 style="color: #2d3748; margin-bottom: 16px; font-size: 1.125rem; font-weight: 600;">📋 策略特色說明</h3>
                 <div style="color: #4a5568; line-height: 1.8; display: grid; gap: 12px;">
                     <div style="display: flex; align-items: flex-start; gap: 12px;">
-                        <span style="color: #4299e1; font-weight: 600; min-width: 24px;">🎯</span>
-                        <div><strong>NAS日內策略：</strong>專注於NASDAQ100的日內突破交易，結合盤型判斷實現策略自動切換</div>
+                        <span style="color: #4299e1; font-weight: 600; min-width: 24px;">📊</span>
+                        <div><strong>美股指數策略：</strong>專注於美國科技股指數，利用開盤時段的價格波動，智能選擇最適合的交易模式</div>
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 12px;">
                         <span style="color: #ed8936; font-weight: 600; min-width: 24px;">🥇</span>
-                        <div><strong>XAU雙參數策略：</strong>黃金交易的雙軌系統，同時運行趨勢追蹤和區間震盪策略</div>
+                        <div><strong>黃金雙軌策略：</strong>同時運行兩種不同的黃金交易策略，適應各種市場環境變化</div>
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 12px;">
                         <span style="color: #9f7aea; font-weight: 600; min-width: 24px;">⚡</span>
-                        <div><strong>XAU2D突破策略：</strong>採用高級過濾技術，降低假突破風險，提升交易品質</div>
+                        <div><strong>黃金突破策略：</strong>專門捕捉黃金價格的重要突破機會，使用先進技術避免假突破</div>
                     </div>
                     <div style="display: flex; align-items: flex-start; gap: 12px;">
                         <span style="color: #48bb78; font-weight: 600; min-width: 24px;">🛡️</span>
-                        <div><strong>風險管理：</strong>全面採用動態止損、倉位管理和統計學優化的資金配置</div>
+                        <div><strong>智能風控：</strong>所有策略都配備科學的風險管理系統，保護投資本金安全</div>
                     </div>
                 </div>
             </div>
@@ -681,6 +722,20 @@
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, index * 200);
+            });
+        });
+
+        // 圖片載入錯誤處理
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    const filenameDiv = this.nextElementSibling;
+                    if (filenameDiv && filenameDiv.classList.contains('filename')) {
+                        filenameDiv.style.display = 'block';
+                    }
+                });
             });
         });
     </script>
